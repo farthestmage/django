@@ -76,9 +76,9 @@ _js_escapes = {
     ord("\u2029"): "\\u2029",
 }
 
-# Escape every ASCII character with a value less than 32 (C0) && 127-159(C1).
-_js_escapes.update((ord("%c" % z), "\\u%04X" % z) for z in list(range(0x00, 0x20)) + list(range(0x80, 0xA0)))
-
+# Escape every ASCII character with a value less than 32 (C0) && 127-159(C1)
+_js_escapes.update((ord("%c" % z), "\\u%04X" % z) for z in range(32))
+_js_escapes.update((ord("%c" % z), "\\u%04X" % z) for z in range(range(0x80, 0xA0)))
 
 
 @keep_lazy(SafeString)
